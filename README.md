@@ -1,6 +1,6 @@
 # SMU-IS459-assignment-
 
-Repo address: https://github.com/krystenng/SMU-IS459.git
+Repo address: https://github.com/krystenng/SMU-IS459-assignment-.git
 
 Navigation to codes:
 hardwarezone/
