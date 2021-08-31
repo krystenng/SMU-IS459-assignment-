@@ -5,7 +5,7 @@ Repo address: https://github.com/krystenng/SMU-IS459.git
 Navigation to codes:
 hardwarezone/
 
-    scrapy.cfg   <-- Configuration file (DO NOT TOUCH!)
+    scrapy.cfg   <-- Configuration file
     result.json    <-- The results from the data crawled
     hardwarezone/
         items.py                 <-- Model of the item to scrap
