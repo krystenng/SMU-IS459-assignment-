@@ -28,15 +28,15 @@ class SpiderSpider(scrapy.Spider):
         if next_page_partial_url != None:
             threads = response.xpath('//article[@class="message message--post js-post js-inlineModContainer  "]')
             for thread in threads:
-                name = response.xpath('//div/h1/text()').extract_first()
+                topic = response.xpath('//div/h1/text()').extract_first()
                 content_list = thread.xpath('.//div[@class="bbWrapper"]/text()').extract()
                 content = ''.join(content_list)
                 author = thread.xpath('.//h4/a/text()').extract_first()
                 if author == None:
                     author = thread.xpath('.//h4/a/span/text()').extract_first()
                 yield {
-                    'Name': name,
                     'Author': author,
+		    'Topic': topic,
                     'content': content
                 }
             next_page_url = self.base_url + next_page_partial_url
@@ -45,15 +45,15 @@ class SpiderSpider(scrapy.Spider):
         else:
             threads = response.xpath('//article[@class="message message--post js-post js-inlineModContainer  "]')
             for thread in threads:
-                name = response.xpath('//div/h1/text()').extract_first()
+                topic = response.xpath('//div/h1/text()').extract_first()
                 content_list = thread.xpath('.//div[@class="bbWrapper"]/text()').extract()
                 content = ''.join(content_list)
                 author = thread.xpath('.//h4/a/text()').extract_first()
                 if author == None:
                     author = thread.xpath('.//h4/a/span/text()').extract_first()
                 yield {
-                    'Name': name,
                     'Author': author,
+		    'Topic': topic,
                     'content': content
                 }
         
