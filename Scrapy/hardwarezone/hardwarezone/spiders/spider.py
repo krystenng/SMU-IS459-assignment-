@@ -12,10 +12,9 @@ class SpiderSpider(scrapy.Spider):
 
         all_the_threads = response.xpath('//div[starts-with(@class, "structItem structItem--thread js-inlineModContainer js-threadListItem-")]')
 
-        # print(len(all_the_threads))
         for thread in all_the_threads:
             thread_url = self.base_url + thread.xpath('.//div[@class="structItem-title"]/a/@href').extract_first()
-            # print(thread_url)
+            
             yield scrapy.Request(thread_url, callback=self.parse_thread,dont_filter=True)
 
         next_page_partial_url = response.xpath('//li[@class="pageNav-page pageNav-page--later"]/a/@href').extract_first()
@@ -25,9 +24,6 @@ class SpiderSpider(scrapy.Spider):
 
     def parse_thread(self, response):
 
-        # threads = response.xpath('//article[@class="message message--post js-post js-inlineModContainer  "]')
-        # print(len(thread))
-
         next_page_partial_url = response.xpath('//li[@class="pageNav-page pageNav-page--later"]/a/@href').extract_first()
         if next_page_partial_url != None:
             threads = response.xpath('//article[@class="message message--post js-post js-inlineModContainer  "]')
@@ -35,11 +31,9 @@ class SpiderSpider(scrapy.Spider):
                 name = response.xpath('//div/h1/text()').extract_first()
                 content_list = thread.xpath('.//div[@class="bbWrapper"]/text()').extract()
                 content = ''.join(content_list)
-                # print(content)
                 author = thread.xpath('.//h4/a/text()').extract_first()
                 if author == None:
                     author = thread.xpath('.//h4/a/span/text()').extract_first()
-                # print(author)
                 yield {
                     'Name': name,
                     'Author': author,
@@ -54,11 +48,9 @@ class SpiderSpider(scrapy.Spider):
                 name = response.xpath('//div/h1/text()').extract_first()
                 content_list = thread.xpath('.//div[@class="bbWrapper"]/text()').extract()
                 content = ''.join(content_list)
-                # print(content)
                 author = thread.xpath('.//h4/a/text()').extract_first()
                 if author == None:
                     author = thread.xpath('.//h4/a/span/text()').extract_first()
-                # print(author)
                 yield {
                     'Name': name,
                     'Author': author,
