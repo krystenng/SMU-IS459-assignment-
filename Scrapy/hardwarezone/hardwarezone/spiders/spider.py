@@ -36,7 +36,7 @@ class SpiderSpider(scrapy.Spider):
                     author = thread.xpath('.//h4/a/span/text()').extract_first()
                 yield {
                     'Author': author,
-		            'Topic': topic,
+                    'Topic': topic,
                     'content': content
                 }
             next_page_url = self.base_url + next_page_partial_url
@@ -53,7 +53,7 @@ class SpiderSpider(scrapy.Spider):
                     author = thread.xpath('.//h4/a/span/text()').extract_first()
                 yield {
                     'Author': author,
-		            'Topic': topic,
+                    'Topic': topic,
                     'content': content
                 }
         
