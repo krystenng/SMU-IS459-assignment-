@@ -9,7 +9,7 @@ hardwarezone/
     result.json    <-- The results from the data crawled
     hardwarezone/
         items.py                 <-- Model of the item to scrap
-        middlewares.py    <-- Scrapy processing hooks (DO NOT TOUCH)
+        middlewares.py    <-- Scrapy processing hooks
         pipelines.py           <-- What to do with the scraped item
         settings.py             <-- Settings file
         spiders/                  <-- Directory of the spider
