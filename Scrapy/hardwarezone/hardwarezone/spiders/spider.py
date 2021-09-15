@@ -34,8 +34,13 @@ class SpiderSpider(scrapy.Spider):
                     author = post.xpath('.//h4/a/span/text()').extract_first()
 
                 yield {
+<<<<<<< HEAD
                     'topic': topic,
                     'author': author,
+=======
+                    'Author': author,
+                    'Topic': topic,
+>>>>>>> 2e4814b4c961f8657ef1f14fe527d02e68d5b73d
                     'content': content
                 }
 
@@ -54,7 +59,12 @@ class SpiderSpider(scrapy.Spider):
                     author = post.xpath('.//h4/a/span/text()').extract_first()
 
                 yield {
+<<<<<<< HEAD
                     'topic': topic,
                     'author': author,
+=======
+                    'Author': author,
+                    'Topic': topic,
+>>>>>>> 2e4814b4c961f8657ef1f14fe527d02e68d5b73d
                     'content': content
                 }

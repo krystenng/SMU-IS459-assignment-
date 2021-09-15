@@ -38,6 +38,10 @@ Using ubuntu (20.04) to dump the records to mongoDB:
 
 >>> cd hardwarezone
 
+>>> mongd       <-- in another terminal to start your mongoDB running
+
+>>> mongo
+
 >>> scrapy crawl spider                <-- ensure that the pipelines.py and settings.py have the codes to connect to the localhost
                                          port 27017
 
