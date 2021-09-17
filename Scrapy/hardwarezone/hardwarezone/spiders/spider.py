@@ -28,7 +28,8 @@ class SpiderSpider(scrapy.Spider):
 
                 topic = response.xpath('//h1[@class="p-title-value"]/text()').extract_first()
                 author = post.xpath('.//h4/a/text()').extract_first()
-                content = post.xpath('.//article/div[@class="bbWrapper"]/text()').extract_first()
+                content = post.xpath('.//article/div[@class="bbWrapper"]/text()').extract()
+                content = ''.join(content_list)
 
                 if author == None:
                     author = post.xpath('.//h4/a/span/text()').extract_first()
@@ -48,7 +49,8 @@ class SpiderSpider(scrapy.Spider):
 
                 topic = response.xpath('//h1[@class="p-title-value"]/text()').extract_first()
                 author = post.xpath('.//h4[@class="message-name"]/a/text()').extract_first()
-                content = post.xpath('.//article/div[@class="bbWrapper"]/text()').extract_first()
+                content = post.xpath('.//article/div[@class="bbWrapper"]/text()').extract()
+                content = ''.join(content_list)
 
                 if author == None:
                     author = post.xpath('.//h4/a/span/text()').extract_first()
