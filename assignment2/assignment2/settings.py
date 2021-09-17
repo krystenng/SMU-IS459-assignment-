@@ -68,7 +68,7 @@ ITEM_PIPELINES = {
 
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
-MONGODB_DB = "hardwarezone_1"
+MONGODB_DB = "assignment2"
 TOPIC_COLLECTION = "topics"
 POST_COLLECTION = "posts"
 

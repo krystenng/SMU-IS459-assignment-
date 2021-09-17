@@ -6,21 +6,15 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-
-
 import pymongo
 
-# # from scrapy.conf import settings
-# from scrapy.exceptions import DropItem
-# from scrapy import log
-
-class HardwarezonePipeline:
+class Assignment2Pipeline:
     def __init__(self):
         connection = pymongo.MongoClient(
             "localhost",
             27017
         )
-        db = connection["hardwarezone_1"]
+        db = connection["assignment2"]
         self.collection = db["posts"]
 
     def process_item(self, item, spider):
