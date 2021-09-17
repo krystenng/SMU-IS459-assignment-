@@ -6,12 +6,12 @@ Navigation to codes:
 
 Python code for questions 1 and 2:
 
-assignment_2_q1q2.py
+>>> assignment_2_q1q2.py
 
 
 Python code for question 3:
 
-assignment_2_q3.py
+>>> assignment_2_q3.py
 
 
 Data scraped for question3:
