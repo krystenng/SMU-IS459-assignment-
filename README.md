@@ -17,6 +17,7 @@ assignment_2_q3.py
 Data scraped for question3:
 
 assignment2/
+
 		result.json   
 		scrapy.cfg
 		assignment2.parquet
