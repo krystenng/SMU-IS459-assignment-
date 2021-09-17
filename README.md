@@ -22,7 +22,7 @@ assignment2/
 		scrapy.cfg
 		assignment2.parquet
 		mongodb_to_parquet.py
-        assignment2/
+        	assignment2/
 			spiders/
 				__init__.py
 				spider.py
