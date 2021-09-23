@@ -1,6 +1,40 @@
 # SMU-IS459-assignment-
+# Assignment 2 instructions
 
-Repo address: https://github.com/krystenng/SMU-IS459-assignment-.git
+Navigation to codes:
+
+
+Python code for questions 1 and 2:
+
+>>> assignment_2_q1q2.py
+
+
+Python code for question 3:
+
+>>> assignment_2_q3.py
+
+
+Data scraped for question3:
+
+assignment2/
+
+		result.json   
+		scrapy.cfg
+		assignment2.parquet
+		mongodb_to_parquet.py
+        	assignment2/
+			spiders/
+				__init__.py
+				spider.py
+			items.py
+			middlewares.py
+			pipelines.py
+			settings.py
+			__init__.py
+
+
+
+# Assignment 1 instructions
 
 Navigation to codes:
 hardwarezone/
