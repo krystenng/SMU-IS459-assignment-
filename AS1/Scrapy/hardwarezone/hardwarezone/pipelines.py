@@ -7,6 +7,8 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 import pymongo
+import json
+from kafka import KafkaProducer
 
 # # from scrapy.conf import settings
 # from scrapy.exceptions import DropItem
@@ -20,6 +22,8 @@ class HardwarezonePipeline:
         )
         db = connection["hardwarezone"]
         self.collection = db["posts"]
+        self.producer = KafkaProducer(bootstrap_servers=['localhost:9092'], \
+            value_serializer=lambda v:json.dumps(v).encode('utf-8'))
 
     def process_item(self, item, spider):
         valid = True
@@ -28,5 +32,6 @@ class HardwarezonePipeline:
                 valid = False
                 raise DropItem("Missing {0}!".format(data))
         if valid:
-            self.collection.insert(dict(item))
+            #self.collection.insert(dict(item))
+            self.producer.send('scrapy-output', dict(item))
         return item
