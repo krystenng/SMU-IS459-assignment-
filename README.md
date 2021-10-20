@@ -10,7 +10,7 @@ AS3/
                 README.md
 		kafka_wordcount.py   
 		kafka_postcount.py
-        	Scrapy/
+		Scrapy/
 			spiders/
 				__init__.py
 				spider.py
