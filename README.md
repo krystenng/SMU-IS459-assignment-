@@ -1,6 +1,28 @@
 # SMU-IS459-assignment-
 # Assignment 3 instructions
 
+Navigation to codes:
+
+Assignment 3 is inside the AS3 folder
+
+AS3/
+
+                README.md
+		kafka_wordcount.py   
+		kafka_postcount.py
+        	Scrapy/
+			spiders/
+				__init__.py
+				spider.py
+			items.py
+			middlewares.py
+			pipelines.py
+			settings.py
+			__init__.py
+			
+>>> kafka_wordcount.py --> This is the file to show the top-10 words in the posts in 2 minutes
+>>> kafka_postcount.py --> This is the file to show the top-10 users with most posts in 2 minutes
+>>> Instructions on how to run it, please look at the README.md in AS3 folder
 
 # Assignment 2 instructions
 
