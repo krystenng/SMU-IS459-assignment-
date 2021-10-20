@@ -9,7 +9,6 @@ def parse_data_from_kafka_message(sdf, schema):
     from pyspark.sql.functions import split
     assert sdf.isStreaming == True, "DataFrame doesn't receive streaming data"
     col = split(sdf['value'], '",')
-
     #split attributes to nested array in one Column
     #now expand col to multiple top-level columns
     for idx, field in enumerate(schema):
@@ -32,7 +31,6 @@ if __name__ == "__main__":
 
     #Parse the fields in the value column of the message
     lines = df.selectExpr("CAST(value AS STRING)")
-    
 
     #Specify the schema of the fields
     hardwarezoneSchema = StructType([ \
@@ -45,32 +43,14 @@ if __name__ == "__main__":
     lines = parse_data_from_kafka_message(lines, hardwarezoneSchema)
     lines = lines.withColumn("timestamp", current_timestamp())
 
-    sentence = lines \
-            .select("content", "timestamp", \
-              explode(split(lines.content, ": ")) \
-            .alias("array"))
+    query = lines \
+       .select("timestamp", "author") \
+       .groupBy(window("timestamp", "2 minutes", "1 minute"), lines.author) \
+       .count()
 
-    words = sentence \
-             .select("array", "timestamp", \
-               explode(split(sentence.array, " ")) \
-             .alias("word"))
-
-    wordsFilter = words.filter(words.word != '"content"')
-    wordsFilter = wordsFilter.filter(words.word != '')
-    wordsFilter = wordsFilter.filter(words.word != '"}')
-
-    wordCounts = wordsFilter \
-                .select("timestamp", "word") \
-                .dropna() \
-                .groupBy(window("timestamp", "2 minutes", "1 minute"), words.word) \
-                .count()
-
-    wordSort = wordCounts \
-                .dropna() \
-                .orderBy(desc("count")).limit(10)
-
+    querySort = query.orderBy(desc("count")).limit(10)
     #Select the content field and output
-    contents = wordSort.select("word", "count") \
+    contents = querySort.select("author", "count") \
         .writeStream \
         .queryName("WriteContent") \
         .outputMode("complete") \
