@@ -8,7 +8,7 @@ Assignment 3 is inside the AS3 folder
 AS3/
 
                 README.md
-	        kafka_wordcount.py   
+		kafka_wordcount.py   
 		kafka_postcount.py
         	Scrapy/
 			spiders/
