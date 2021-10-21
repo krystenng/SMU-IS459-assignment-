@@ -47,21 +47,21 @@ AS3/
 
 >>> Change this line of code inside both the python files to your own spark-checkpoint: .option("checkpointLocation", "/user/krystenng/spark-checkpoint") to /user/zzj/spark-checkpoint
 
->>> 1. spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 kafka_postcount.py --> To run to show the top-10 users with most posts in 2 minutes
+1. spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 kafka_postcount.py --> To run to show the top-10 users with most posts in 2 minutes
 
-Output of the top-10 users will be in the console (Run it for 20 minutes)
+>>> Output of the top-10 users will be in the console (Run it for 20 minutes)
 
->>> Clear spark-checkpoint in the hadoop to run the next file:
+Clear spark-checkpoint in the hadoop to run the next file:
 
->>> hadoop fs -rm -r -f /folder_where_you_put_your_checkpoint  
+hadoop fs -rm -r -f /folder_where_you_put_your_checkpoint  
 
->>> 2. spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 kafka_wordcount.py --> To run to show the top-10 words in the posts in 2 minutes
+2. spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 kafka_wordcount.py --> To run to show the top-10 words in the posts in 2 minutes
 
-Output of the top-10 users will be in the console (Run it for 20 minutes)
+>>> Output of the top-10 users will be in the console (Run it for 20 minutes)
 
->>> 2. spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 kafka_postwordcount.py --> To run to show the top-10 words in the posts in 2 minutes (If this does not work, try out points 1 and 2 for the individual python files)
+3. spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 kafka_postwordcount.py --> To run to show the top-10 words in the posts in 2 minutes (If this does not work, try out points 1 and 2 for the individual python files)
 
-Output of the top-10 users and top-10 users will be in the console (Run it for 20 mins)
+>>> Output of the top-10 users and top-10 users will be in the console (Run it for 20 mins)
 
 
 
