@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
 
     #Select the content field and output
-    contents = wordSort.select("word", "count") \
+    wordCount = wordSort.select("word", "count") \
         .writeStream \
         .queryName("WriteWordCount") \
         .outputMode("complete") \
@@ -103,4 +103,4 @@ if __name__ == "__main__":
         .start()
 
     #Start the job and wait for the incoming messages
-    contents.awaitTermination()
+    wordCount.awaitTermination()
