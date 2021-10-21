@@ -4,6 +4,7 @@ from pyspark.sql.functions import explode
 from pyspark.sql.functions import split
 from pyspark.sql import functions as F
 from pyspark.sql.functions import *
+from nltk.corpus import stopwords 
 
 def parse_data_from_kafka_message(sdf, schema):
     from pyspark.sql.functions import split
@@ -58,6 +59,10 @@ if __name__ == "__main__":
     wordsFilter = words.filter(words.word != '"content"')
     wordsFilter = wordsFilter.filter(words.word != '')
     wordsFilter = wordsFilter.filter(words.word != '"}')
+
+    stop_words = set(stopwords.words('english'))
+    for stop_word in stop_words:
+        wordsFilter = wordsFilter.filter(words.word != stop_word)
 
     wordCounts = wordsFilter \
                 .select("timestamp", "word") \
