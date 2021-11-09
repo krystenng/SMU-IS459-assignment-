@@ -47,7 +47,7 @@ if __name__ == "__main__":
         .orderBy(desc('window'), desc("count")).limit(10)
 
     # #Select the content field and output
-    contents1 = top10_authorsDF \
+    contents1 = top10_authorsDF.select("author", "count") \
         .writeStream \
         .queryName("WriteContent1") \
         .trigger(processingTime="1 minute") \
