@@ -44,14 +44,15 @@ if __name__ == "__main__":
         .orderBy(desc('window'), desc("count")).limit(10)
 
     # #Select the content field and output
-    contents1 = top10_authorsDF.select(to_json(struct("window", "author", "count")).alias("value")) \
+    contents1 = top10_authorsDF.selectExpr("CAST(window AS STRING) AS key", "to_json(struct(author, count) AS value") \
         .writeStream \
         .format("kafka") \
         .option("kafka.bootstrap.servers", "localhost:9092") \
-        .option("topic", "test") \
+        .option("topic", "stream_data") \
         .trigger(processingTime="1 minute") \
         .outputMode("complete") \
-        .option("checkpointLocation", "/user/krystenng/spark-checkpoint1") \
+        .format("console") \
+        .option("checkpointLocation", "/user/krystenng/spark-checkpoint") \
         .option("truncate", False) \
         .start()
    

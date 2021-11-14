@@ -11,3 +11,4 @@ def start_crawler(starting_url):
 
     process.crawl(KiasuSpider)
     process.start()
+
