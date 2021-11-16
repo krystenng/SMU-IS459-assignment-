@@ -65,7 +65,7 @@ def get_kafka_posts(request):
     for message in consumer:
         msgValue = json.loads(message.value)
 
-        output.append(msgValue)
+        output.append(msgValue.value)
 
     return JsonResponse(output, safe=False)
 
