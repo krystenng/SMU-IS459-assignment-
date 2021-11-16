@@ -31,3 +31,6 @@ class PostCount(models.Model):
 
     def __str__(self):
         return self.user_name + " : " + str(self.post_count)
+
+
+

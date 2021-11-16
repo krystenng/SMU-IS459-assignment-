@@ -6,7 +6,6 @@ from .forms import PostForm
 from kafka import KafkaConsumer
 from json import loads
 import json
-import pickle
 
 # Create your views here.
 def index(request):
@@ -58,16 +57,21 @@ def get_kafka_posts(request):
         consumer_timeout_ms=60000,
     )
 
-    consumer.subscribe(["stream_data"])
+    consumer.subscribe("stream_data")
 
     output = []
 
     for message in consumer:
-        msgValue = json.loads(message.value)
+        if len(output) < 11:
+            output.append(message)
+    return JsonResponse(data={
+        'labels': output,
+    })
+        # msgValue = json.loads(message.value)
 
-        output.append(msgValue)
+        # output.append(msgValue)
 
-    return JsonResponse(json.loads(output), safe=False)
+    # return JsonResponse(json.loads(output), safe=False)
 
 def get_barchart(request):
     return render(request, 'barchart.html')
