@@ -6,7 +6,6 @@ from .forms import PostForm
 from kafka import KafkaConsumer
 from json import loads
 import json
-import pickle
 
 # Create your views here.
 def index(request):
@@ -78,6 +77,7 @@ def get_kafka_posts(request):
         'author': author,
         'count': count
     })
+
 
 def get_barchart(request):
     return render(request, 'barchart.html')
