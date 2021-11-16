@@ -1,4 +1,13 @@
 # SMU-IS459-assignment-
+# Assignment 4 instructions
+
+AS4/
+
+		README.md
+		django/  
+
+>>> Instructions are inside the folder AS4, under README.md
+
 # Assignment 3 instructions
 
 Navigation to codes:
