@@ -64,11 +64,10 @@ def get_kafka_posts(request):
 
     for message in consumer:
         msgValue = json.loads(message.value)
-        return JsonResponse(msgValue, safe=False)
-        #deserialized_data = json.loads(message.value)
-        #return JsonResponse(deserialized_data, safe=False)
-#        output.update(deserialized_data)
- #   return JsonResponse(output, safe=False)
+
+        output.append(msgValue)
+
+    return JsonResponse(output, safe=False)
 
 def get_barchart(request):
     return render(request, 'barchart.html')
