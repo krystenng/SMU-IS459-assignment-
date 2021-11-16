@@ -16,10 +16,13 @@ class KiasuSpider(scrapy.Spider):
             post_content = ' '.join(contentlist)
             post_content = post_content.replace('\n', '')
             post_content = post_content.replace('\t', '')
+            author_test = post.xpath('div/div/section/div/h4/a/text()').get()
+            if author_test != "Null" or author_test == '' or author_test == None:
+                author = author_test
 
             yield {
                 'topic': topic,
-                'author': post.xpath('div/div/section/div/h4/a/text()').get(),
+                'author': author,
                 'content': post_content,
             }
 

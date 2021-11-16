@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
     top10_authorsDF = users_df \
         .filter(users_df.end < users_df.current_timestamp) \
-        .orderBy(desc('window'), desc("count")).limit(10)
+        .orderBy(desc('window'), desc("count")).na.drop().limit(10)
 
 
     # #Select the content field and output

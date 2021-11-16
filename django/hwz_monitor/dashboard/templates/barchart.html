@@ -29,11 +29,11 @@
           new Chart(ctx, {
             type: 'bar',
             data: {
-              labels: data.labels,
+              author: data.author,
               datasets: [{
                 label: 'Post Count',
                 backgroundColor: 'blue',
-                data: data.data
+                count: data.count
               }]          
             },
             options: {

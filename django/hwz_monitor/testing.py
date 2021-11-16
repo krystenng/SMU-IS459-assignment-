@@ -47,14 +47,13 @@ if __name__ == "__main__":
         .orderBy(desc('window'), desc("count")).limit(10)
 
     # #Select the content field and output
-    contents1 = top10_authorsDF.selectExpr("to_json(struct(*)) AS value") \
+    contents1 = top10_authorsDF.select("current_timestamp", "author", "count") \
         .writeStream \
-        .format("kafka") \
-        .option("kafka.bootstrap.servers", "localhost:9092") \
-        .option("topic", "stream_data") \
+        .format("csv") \
         .trigger(processingTime="1 minute") \
-        .outputMode("complete") \
-        .option("checkpointLocation", "/user/krystenng/spark-checkpoint") \
+        .outputMode("append") \
+        .option("checkpointLocation", "/user/krystenng/spark-checkpoint1") \
+        .option("path", "output_path/") \
         .start() 
 
     #Start the job and wait for the incoming messages

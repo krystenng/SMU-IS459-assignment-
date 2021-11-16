@@ -58,16 +58,26 @@ def get_kafka_posts(request):
         consumer_timeout_ms=60000,
     )
 
-    consumer.subscribe(["stream_data"])
+    consumer.subscribe("stream_data")
 
     output = []
 
     for message in consumer:
-        msgValue = json.loads(message.value)
+        post = json.loads(message.value)
+        if len(output) < 11:
+            output.append(post)
 
-        output.append(msgValue)
+    author = []
+    count = []
 
-    return JsonResponse(json.loads(output), safe=False)
+    for post in output:
+        author.append(post["author"])
+        count.append(str(post["count"]))
+
+    return JsonResponse(data={
+        'author': author,
+        'count': count
+    })
 
 def get_barchart(request):
     return render(request, 'barchart.html')
