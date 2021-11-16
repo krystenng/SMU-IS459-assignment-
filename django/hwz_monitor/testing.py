@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import explode
-from pyspark.sql.functions import from_json, col, window, current_timestamp, desc, to_json, struct
+from pyspark.sql.functions import from_json, col, window, current_timestamp, desc
 
 
 if __name__ == "__main__":
@@ -46,18 +46,17 @@ if __name__ == "__main__":
         .filter(users_df.end < users_df.current_timestamp) \
         .orderBy(desc('window'), desc("count")).limit(10)
 
-
     # #Select the content field and output
     contents1 = top10_authorsDF.selectExpr("to_json(struct(*)) AS value") \
         .writeStream \
-        .queryName("Datastream") \
-        .trigger(processingTime="1 minute") \
-        .outputMode("complete") \
         .format("kafka") \
         .option("kafka.bootstrap.servers", "localhost:9092") \
         .option("topic", "stream_data") \
-        .option("checkpointLocation", "/user/krystenng/spark-checkpoint1") \
-        .start()
+        .trigger(processingTime="1 minute") \
+        .outputMode("complete") \
+        .option("checkpointLocation", "/user/krystenng/spark-checkpoint") \
+        .start() 
 
     #Start the job and wait for the incoming messages
     contents1.awaitTermination()
+

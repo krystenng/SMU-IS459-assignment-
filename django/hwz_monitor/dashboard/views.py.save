@@ -4,9 +4,6 @@ from django.http import HttpResponse,JsonResponse
 from .models import User,Topic,Post,PostCount
 from .forms import PostForm
 from kafka import KafkaConsumer
-from json import loads
-import json
-import pickle
 
 # Create your views here.
 def index(request):
@@ -38,37 +35,25 @@ def get_post_count(request):
     labels = []
     data = []
 
-    queryset = PostCount.objects.all()
-
-    for entry in queryset:
-        labels.append(entry.user_name)
-        data.append(entry.post_count)
-
-    return JsonResponse(data={
-        'labels': labels,
-        'data': data,
-    })
-
-def get_kafka_posts(request):
-
-    consumer = KafkaConsumer('stream_data',
-        bootstrap_servers=['localhost:9092'],
-        group_id = None,
-        enable_auto_commit = True,
-        consumer_timeout_ms=60000,
-    )
-
-    consumer.subscribe(["stream_data"])
-
-    output = []
+    consumer = KafkaConsumer('stream_data', group_id="my_group", bootstrap_servers=['localhost:9092'],
+                              auto_offset_reset='earliest', enable_auto_commit=False,
+                              value_deserializer=lambda m: json.loads(m.decode('ascii')))
 
     for message in consumer:
-        msgValue = json.loads(message.value)
-        return JsonResponse(msgValue, safe=False)
-        #deserialized_data = json.loads(message.value)
-        #return JsonResponse(deserialized_data, safe=False)
-#        output.update(deserialized_data)
- #   return JsonResponse(output, safe=False)
+        print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
+                                          message.offset, message.key,
+                                          message.value))
+    
+    #queryset = PostCount.objects.all()
+
+    #for entry in queryset:
+       # labels.append(entry.user_name)
+       # data.append(entry.post_count)
+
+   # return JsonResponse(data={
+    #    'labels': labels,
+     #   'data': data,
+   # })
 
 def get_barchart(request):
     return render(request, 'barchart.html')
