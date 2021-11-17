@@ -10,6 +10,7 @@
 > >> Edited the codes to output to kafka broker:
 > >> 
 > >> Drop the columns with null author
+> >> > Navigation to codes is as shown:
 ```
 >>> cd SMU-IS459-assignment-/AS4/django/hwz_monitor/
 >>> nano postcount_kafka.py
@@ -21,18 +22,21 @@
 > >> Will get the latest top10 post as by default the auto.offset.reset = latest already
 > >> 
 > >> Set the timeout, so that it will not run forever and will get the latest top 10 post from broker
+> >> > Navigation to codes is as shown:
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/views.py
 ```
 
 > 3. urls.py
 >  >> Edited the codes to replace post-count-chart with kafka count so that output from kafka can be shown on barchart:
+>  >> > Navigation to codes is as shown:
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/urls.py 
 ```
 
 > 4. barchart.html
 > >> Edited this such that the labels and data matches with the JSONResponse from kafka
+> >> > Navigation to codes is as shown:
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/templates/barchart.html
 ```
@@ -78,7 +82,7 @@
 >>> mongod
 ```
 
-**Open a new terminal to start the kafka messages for scrapy:**
+**Open a new terminal to consume the kafka messages for scrapy:**
 ```
 >>> cd kafka_2.12-3.0.0
 >>> bin/kafka-console-consumer.sh --topic scrapy-output --bootstrap-server localhost:9092
@@ -117,7 +121,7 @@
 >>> python manage.py runserver 8080
 ```
 
-**Start up the browser:**
+### Start up the browser:
 ```
 >> To see the top 10 authors and count in json format
 >>> http://localhost:8000/dashboard/kafka
