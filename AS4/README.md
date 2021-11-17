@@ -104,6 +104,12 @@
 >>> spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 postcount_kafka.py
 ```
 
+*If necessary to clear checkpoint, open a new terminal:*
+```
+>>> hadoop fs -rm -r -f /user/krystenng/spark-checkpoint
+>>> hadoop fs -mkdir /user/krystenng/spark-checkpoint
+```
+
 **Open a new terminal to start the kafka broker running:**
 ```
 >>> cd kafka_2.12-3.0.0
@@ -130,11 +136,7 @@
 ```
 ***To note: Refresh both pages to see a new set of output***
 
-**If necessary to clear checkpoint, open a new terminal:**
-```
->>> hadoop fs -rm -r -f /user/krystenng/spark-checkpoint
->>> hadoop fs -mkdir /user/krystenng/spark-checkpoint
-```
+
 
 
 
