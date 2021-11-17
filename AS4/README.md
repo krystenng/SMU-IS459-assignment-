@@ -8,6 +8,7 @@
 
 > 1. postcount_kafka.py
 > >> Edited the codes to output to kafka broker:
+> >> 
 > >> Drop the columns with null author
 ```
 >>> cd SMU-IS459-assignment-/AS4/django/hwz_monitor/
@@ -16,7 +17,9 @@
 
 > 2. views.py
 > >> Edited the codes to get the output from kafka broker
+> >> 
 > >> Will get the latest top10 post as by default the auto.offset.reset = latest already
+> >> 
 > >> Set the timeout, so that it will not run forever and will get the latest top 10 post from broker
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/views.py
@@ -110,23 +113,23 @@
 ```
 *If port 8000 is used, can run on port 8080:*
 ```
->>> *cd SMU-IS459-assignment-/AS4/django/hwz_monitor*
->>> *python manage.py runserver 8080*
+>>> cd SMU-IS459-assignment-/AS4/django/hwz_monitor
+>>> python manage.py runserver 8080
 ```
 
 **Start up the browser:**
 ```
->> **To see the top 10 authors and count in json format**
->>> **http://localhost:8000/dashboard/kafka**
->> **To see the top 10 post-count, represented by a barchart**
->>> **http://localhost:8000/dashboard/barchart**
+>> To see the top 10 authors and count in json format
+>>> http://localhost:8000/dashboard/kafka
+>> To see the top 10 post-count, represented by a barchart
+>>> http://localhost:8000/dashboard/barchart
 ```
 ***To note: Refresh to see a new set of output***
 
 **If necessary to clear checkpoint, open a new terminal:**
 ```
->>> *hadoop fs -rm -r -f /user/krystenng/spark-checkpoint*
->>> *hadoop fs -mkdir /user/krystenng/spark-checkpoint*
+>>> hadoop fs -rm -r -f /user/krystenng/spark-checkpoint
+>>> hadoop fs -mkdir /user/krystenng/spark-checkpoint
 ```
 
 
