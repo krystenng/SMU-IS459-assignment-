@@ -1,7 +1,7 @@
 # Assignment 4 instructions
 
 # Results of the post-count:
-<img width="743" alt="image" src="https://user-images.githubusercontent.com/79707828/142147090-ed41bdfb-2378-4c83-9a22-f7833f861bdd.png">
+<img width="871" alt="image" src="https://user-images.githubusercontent.com/79707828/142149752-12859fe0-c54b-4178-a644-bb3e0d8e2e76.png">
 
 
 ## Files that are edited:
