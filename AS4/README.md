@@ -37,7 +37,7 @@
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/templates/barchart.html
 ```
 
-## Things that need to be installed beforehand:**
+## Things that need to be installed beforehand:
 ```
 >>> pip install django
 >>> pip install celery
@@ -45,7 +45,7 @@
 >>> pip install django-cors-headers
 ```
 
-## Things that need to be run to get the output:**
+## Things that need to be run to get the output:
 
 **Open terminal:**
 ```
@@ -124,7 +124,7 @@
 >> To see the top 10 post-count, represented by a barchart
 >>> http://localhost:8000/dashboard/barchart
 ```
-***To note: Refresh to see a new set of output***
+***To note: Refresh both pages to see a new set of output***
 
 **If necessary to clear checkpoint, open a new terminal:**
 ```
