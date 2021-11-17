@@ -29,11 +29,11 @@
           new Chart(ctx, {
             type: 'bar',
             data: {
-              author: data.author,
+              labels: data.author,
               datasets: [{
                 label: 'Post Count',
                 backgroundColor: 'blue',
-                count: data.count
+                data: data.count
               }]          
             },
             options: {
@@ -42,7 +42,7 @@
                   ticks: {
                     beginAtZero: true,
                     min: 0,
-                    max: 180
+                    max: 600
                   }
                 }]
               },
