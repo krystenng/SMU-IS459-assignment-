@@ -15,6 +15,7 @@
 >>> cd SMU-IS459-assignment-/AS4/django/hwz_monitor/
 >>> nano postcount_kafka.py
 ```
+Link: [postcount_kafka.py](https://github.com/krystenng/SMU-IS459-assignment-/blob/main/AS4/django/hwz_monitor/postcount_kafka.py)
 
 > 2. views.py
 > >> Edited the codes to get the output from kafka broker
@@ -26,6 +27,7 @@
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/views.py
 ```
+Link: [views.py](https://github.com/krystenng/SMU-IS459-assignment-/blob/main/AS4/django/hwz_monitor/dashboard/views.py)
 
 > 3. urls.py
 >  >> Edited the codes to replace post-count-chart with kafka count so that output from kafka can be shown on barchart:
@@ -33,6 +35,7 @@
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/urls.py 
 ```
+Link: [urls.py](https://github.com/krystenng/SMU-IS459-assignment-/blob/main/AS4/django/hwz_monitor/dashboard/urls.py)
 
 > 4. barchart.html
 > >> Edited this such that the labels and data matches with the JSONResponse from kafka
@@ -40,6 +43,7 @@
 ```
 >>> nano SMU-IS459-assignment-/AS4/django/hwz_monitor/dashboard/templates/barchart.html
 ```
+Link: [barchart.html](https://github.com/krystenng/SMU-IS459-assignment-/blob/main/AS4/django/hwz_monitor/dashboard/templates/barchart.html)
 
 ## Things that need to be installed beforehand:
 ```
